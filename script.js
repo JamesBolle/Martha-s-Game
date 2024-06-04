@@ -71,7 +71,7 @@ function showClue() {
             clueText = "Unknown clue type";
     }
 
-    document.getElementById('clue').innerText = `${cluePrefix}: ${clueText} (Starts with: ${word.firstLetter.toUpperCase()})`;
+    document.getElementById('clue').innerText = `${cluePrefix}: ${clueText}\n(Starts with: ${word.firstLetter.toUpperCase()})`;
 }
 
 
