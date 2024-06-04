@@ -99,13 +99,23 @@ function checkGuess() {
     } else {
         currentClueIndex++;
         if (currentClueIndex >= clues.length) {
-            document.getElementById('result').innerText = `Out of clues! The word was "${word}".`;
+            const wordObj = words[currentWordIndex];
+            const cluesToShow = [
+                `Word: ${wordObj.word}`,
+                `Definition: ${wordObj.definition}`,
+                `Synonyms: ${wordObj.synonyms.join(", ")}`,
+                `Antonyms: ${wordObj.antonyms.join(", ")}`,
+                `(Starts with: ${wordObj.firstLetter.toUpperCase()})`
+            ];
+            document.getElementById('result').innerText = `Out of clues! The word was "${word}".\n` + cluesToShow.join("\n");
             document.getElementById('nextWord').style.display = 'block';
             document.getElementById('submitGuess').disabled = true;
         } else {
             showClue();
         }
     }
+}
+
 }
 
 
