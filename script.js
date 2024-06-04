@@ -18,12 +18,27 @@ const words = [
 
 let currentWordIndex = 0;
 let currentClueIndex = 0;
-const clues = ["definition", "synonym", "antonym"];
+const clues = ["definition", "synonyms", "antonyms"];
 
 function showClue() {
     const word = words[currentWordIndex];
-    const clueType = clues[currentClueIndex];
-    const clueText = word[clueType];
+    const clueType = clues[Math.floor(Math.random() * clues.length)]; // Randomize clue order
+    let clueText;
+
+    switch (clueType) {
+        case "definition":
+            clueText = word.definition;
+            break;
+        case "synonyms":
+            clueText = word.synonyms.join(", ");
+            break;
+        case "antonyms":
+            clueText = word.antonyms.join(", ");
+            break;
+        default:
+            clueText = "Unknown clue type";
+    }
+
     document.getElementById('clue').innerText = `Clue: ${clueText} (Starts with: ${word.firstLetter.toUpperCase()})`;
 }
 
