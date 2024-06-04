@@ -48,9 +48,24 @@ const clues = ["definition", "synonyms", "antonyms"];
 
 function showClue() {
     const word = shuffledWords[currentWordIndex];
-    const clueType = clues[Math.floor(Math.random() * clues.length)]; // Randomize clue order
+    let clueType;
     let clueText;
     let cluePrefix;
+
+    switch (currentClueIndex) {
+        case 0:
+            clueType = "definition";
+            break;
+        case 1:
+            clueType = "synonyms";
+            break;
+        case 2:
+            clueType = "antonyms";
+            break;
+        default:
+            clueType = "Unknown";
+            break;
+    }
 
     switch (clueType) {
         case "definition":
