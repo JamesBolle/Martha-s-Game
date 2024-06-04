@@ -11,28 +11,28 @@ const words = [
     {
         word: "abduct",
         definition: "To take someone against their will using force or deception",
-        synonyms: ["kidnap","capture","seize", "snatch"],
-        antonyms: ["release","liberate"],
+        synonyms: ["kidnap", "capture", "seize", "snatch"],
+        antonyms: ["release", "liberate"],
         firstLetter: "a"
     },
     {
         word: "absurd",
         definition: "Without any sense or reason",
-        synonyms: ["ludicrous","nonsensical","preposterous"],
-        antonyms: ["sensible","logical","rational"],
+        synonyms: ["ludicrous", "nonsensical", "preposterous"],
+        antonyms: ["sensible", "logical", "rational"],
         firstLetter: "a"
     },
     {
         word: "abundance",
         definition: "A large quantity or amount of something",
-        synonyms: ["wealth","mass","profusion","bounty"],
-        antonyms: ["shortage","scarcity","deficiency"],
+        synonyms: ["wealth", "mass", "profusion", "bounty"],
+        antonyms: ["shortage", "scarcity", "deficiency"],
         firstLetter: "a"
     },
     {
         word: "accompany",
         definition: "To go somewhere wth someone",
-        synonyms: ["usher","chaperone","escort"],
+        synonyms: ["usher", "chaperone", "escort"],
         antonyms: [],
         firstLetter: "a"
     },
@@ -50,8 +50,7 @@ function showClue() {
     const word = shuffledWords[currentWordIndex];
 
     // Always show the definition as the first clue
-    const cluePrefix = "Definition";
-    const clueText = word.definition;
+    let clueText = `Definition: ${word.definition}`;
 
     let remainingClues = ["synonyms", "antonyms"];
 
@@ -59,18 +58,18 @@ function showClue() {
     if (currentClueIndex > 0) {
         remainingClues = shuffle(remainingClues);
         for (const clueType of remainingClues) {
-            let clueText;
+            let additionalClue;
             switch (clueType) {
                 case "synonyms":
-                    clueText = word.synonyms.join(", ");
+                    additionalClue = `Synonyms: ${word.synonyms.join(", ")}`;
                     break;
                 case "antonyms":
-                    clueText = word.antonyms.join(", ");
+                    additionalClue = `Antonyms: ${word.antonyms.join(", ")}`;
                     break;
                 default:
-                    clueText = "Unknown clue type";
+                    additionalClue = "Unknown clue type";
             }
-            document.getElementById('clue').innerText += `\n${clueType.charAt(0).toUpperCase() + clueType.slice(1)}: ${clueText}`;
+            clueText += `\n${additionalClue}`;
         }
     }
 
@@ -78,7 +77,7 @@ function showClue() {
     const firstLetter = word.word.charAt(0).toUpperCase();
     const hiddenWord = firstLetter + " " + "_ ".repeat(wordLength - 1);
 
-    document.getElementById('clue').innerText = `${cluePrefix}: ${clueText}\nClue: ${hiddenWord}`;
+    document.getElementById('clue').innerText = `Clue: ${hiddenWord}\n${clueText}`;
 }
 
 
