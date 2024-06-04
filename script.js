@@ -48,27 +48,10 @@ const clues = ["definition", "synonyms", "antonyms"];
 
 function showClue() {
     const word = shuffledWords[currentWordIndex];
-    const clueType = clues[Math.floor(Math.random() * clues.length)]; // Randomize clue order
-    let clueText;
-    let cluePrefix;
 
-    switch (clueType) {
-        case "definition":
-            cluePrefix = "Definition";
-            clueText = word.definition;
-            break;
-        case "synonyms":
-            cluePrefix = "Synonyms";
-            clueText = word.synonyms.join(", ");
-            break;
-        case "antonyms":
-            cluePrefix = "Antonyms";
-            clueText = word.antonyms.join(", ");
-            break;
-        default:
-            cluePrefix = "Unknown";
-            clueText = "Unknown clue type";
-    }
+    // Always show the definition as the first clue
+    const cluePrefix = "Definition";
+    const clueText = word.definition;
 
     const wordLength = word.word.length;
     const firstLetter = word.word.charAt(0).toUpperCase();
