@@ -22,6 +22,20 @@ const words = [
         antonyms: ["sensible","logical","rational"],
         firstLetter: "a"
     },
+    {
+        word: "abundance",
+        definition: "A large quantity or amount of something",
+        synonyms: ["wealth","mass","profusion","bounty"],
+        antonyms: ["shortage","scarcity","deficiency"],
+        firstLetter: "a"
+    },
+    {
+        word: "accompany",
+        definition: "To go somewhere wth someone",
+        synonyms: ["usher","chaperone","escort"],
+        antonyms: [],
+        firstLetter: "a"
+    },
     // Add more words here
 ];
 
@@ -37,22 +51,27 @@ function showClue() {
     const word = shuffledWords[currentWordIndex];
     const clueType = clues[Math.floor(Math.random() * clues.length)]; // Randomize clue order
     let clueText;
+    let cluePrefix;
 
     switch (clueType) {
         case "definition":
+            cluePrefix = "Definition";
             clueText = word.definition;
             break;
         case "synonyms":
+            cluePrefix = "Synonyms";
             clueText = word.synonyms.join(", ");
             break;
         case "antonyms":
+            cluePrefix = "Antonyms";
             clueText = word.antonyms.join(", ");
             break;
         default:
+            cluePrefix = "Unknown";
             clueText = "Unknown clue type";
     }
 
-    document.getElementById('clue').innerText = `Clue: ${clueText} (Starts with: ${word.firstLetter.toUpperCase()})`;
+    document.getElementById('clue').innerText = `${cluePrefix}: ${clueText} (Starts with: ${word.firstLetter.toUpperCase()})`;
 }
 
 
