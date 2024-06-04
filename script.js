@@ -49,26 +49,32 @@ function showClue() {
     const word = shuffledWords[currentWordIndex];
     let clueText = "";
 
-    // Always show the definition as the first clue
+    // Always show the first letter and word length as the first clue
     if (currentClueIndex === 0) {
-        clueText = `Definition: ${word.definition}`;
+        const firstLetter = word.word.charAt(0).toUpperCase();
+        const hiddenWord = firstLetter + " " + "_ ".repeat(word.word.length - 1);
+        clueText += `First Letter and Length: ${hiddenWord}\n`;
+    }
+
+    // Always show the definition as the second clue
+    if (currentClueIndex === 0 || currentClueIndex === 1) {
+        clueText += `Definition: ${word.definition}\n`;
     } else {
-        // If not the first clue, randomly select either synonyms or antonyms
-        const remainingClueTypes = currentClueIndex === 1 ? ["synonyms", "antonyms"] : ["antonyms", "synonyms"];
+        // If not the first or second clue, randomly select either synonyms or antonyms
+        const remainingClueTypes = currentClueIndex === 2 ? ["synonyms", "antonyms"] : ["antonyms", "synonyms"];
         const selectedClueType = remainingClueTypes[Math.floor(Math.random() * remainingClueTypes.length)];
 
         if (selectedClueType === "synonyms") {
-            clueText = `Synonyms: ${word.synonyms.join(", ")}`;
+            clueText += `Synonyms: ${word.synonyms.join(", ")}\n`;
         } else {
-            clueText = `Antonyms: ${word.antonyms.join(", ")}`;
+            clueText += `Antonyms: ${word.antonyms.join(", ")}\n`;
         }
     }
 
     // If this is the last clue, display it as the hidden word
-    if (currentClueIndex === 2) {
-        const wordLength = word.word.length;
+    if (currentClueIndex === 3) {
         const firstLetter = word.word.charAt(0).toUpperCase();
-        clueText = firstLetter + " " + "_ ".repeat(wordLength - 1);
+        clueText = `${firstLetter} ${"_ ".repeat(word.word.length - 1)}`;
     }
 
     document.getElementById('clue').innerText = `Clue: ${clueText}`;
@@ -92,7 +98,7 @@ function checkGuess() {
         document.getElementById('submitGuess').disabled = true;
     } else {
         currentClueIndex++;
-        if (currentClueIndex >= 3) {
+        if (currentClueIndex >= 4) {
             const wordObj = words[currentWordIndex];
             const cluesToShow = [
                 `Word: ${wordObj.word}`,
