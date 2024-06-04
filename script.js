@@ -49,11 +49,11 @@ function showClue() {
     const word = shuffledWords[currentWordIndex];
     let clueText = "";
 
-    // Always show the first letter and word length as the first clue
+    // Show the first letter of the word and word length before the first clue
     if (currentClueIndex === 0) {
         const firstLetter = word.word.charAt(0).toUpperCase();
         const hiddenWord = firstLetter + " " + "_ ".repeat(word.word.length - 1);
-        clueText += `First Letter and Length: ${hiddenWord}\n`;
+        clueText += `${hiddenWord}\n`;
     }
 
     // Always show the definition as the second clue
@@ -77,7 +77,7 @@ function showClue() {
         clueText = `${firstLetter} ${"_ ".repeat(word.word.length - 1)}`;
     }
 
-    document.getElementById('clue').innerText = `Clue: ${clueText}`;
+    document.getElementById('clue').innerText = clueText;
 }
 
 function checkGuess() {
