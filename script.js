@@ -44,42 +44,35 @@ const shuffledWords = shuffle(words);
 
 let currentWordIndex = 0;
 let currentClueIndex = 0;
-const clues = ["definition", "synonyms", "antonyms"];
 
 function showClue() {
     const word = shuffledWords[currentWordIndex];
+    let clueText = "";
 
     // Always show the definition as the first clue
-    let clueText = `Definition: ${word.definition}`;
+    if (currentClueIndex === 0) {
+        clueText = `Definition: ${word.definition}`;
+    } else {
+        // If not the first clue, randomly select either synonyms or antonyms
+        const remainingClueTypes = currentClueIndex === 1 ? ["synonyms", "antonyms"] : ["antonyms", "synonyms"];
+        const selectedClueType = remainingClueTypes[Math.floor(Math.random() * remainingClueTypes.length)];
 
-    let remainingClues = ["synonyms", "antonyms"];
-
-    // If the player didn't guess correctly, shuffle and display remaining clues
-    if (currentClueIndex > 0) {
-        remainingClues = shuffle(remainingClues);
-        for (const clueType of remainingClues) {
-            let additionalClue;
-            switch (clueType) {
-                case "synonyms":
-                    additionalClue = `Synonyms: ${word.synonyms.join(", ")}`;
-                    break;
-                case "antonyms":
-                    additionalClue = `Antonyms: ${word.antonyms.join(", ")}`;
-                    break;
-                default:
-                    additionalClue = "Unknown clue type";
-            }
-            clueText += `\n${additionalClue}`;
+        if (selectedClueType === "synonyms") {
+            clueText = `Synonyms: ${word.synonyms.join(", ")}`;
+        } else {
+            clueText = `Antonyms: ${word.antonyms.join(", ")}`;
         }
     }
 
-    const wordLength = word.word.length;
-    const firstLetter = word.word.charAt(0).toUpperCase();
-    const hiddenWord = firstLetter + " " + "_ ".repeat(wordLength - 1);
+    // If this is the last clue, display it as the hidden word
+    if (currentClueIndex === 2) {
+        const wordLength = word.word.length;
+        const firstLetter = word.word.charAt(0).toUpperCase();
+        clueText = firstLetter + " " + "_ ".repeat(wordLength - 1);
+    }
 
-    document.getElementById('clue').innerText = `Clue: ${hiddenWord}\n${clueText}`;
+    document.getElementById('clue').innerText = `Clue: ${clueText}`;
 }
-
 
 function checkGuess() {
     const guess = document.getElementById('guessInput').value.trim().toLowerCase();
@@ -99,7 +92,7 @@ function checkGuess() {
         document.getElementById('submitGuess').disabled = true;
     } else {
         currentClueIndex++;
-        if (currentClueIndex >= clues.length) {
+        if (currentClueIndex >= 3) {
             const wordObj = words[currentWordIndex];
             const cluesToShow = [
                 `Word: ${wordObj.word}`,
