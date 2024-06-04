@@ -1,3 +1,12 @@
+// Shuffling function to randomize the order of words
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
 const words = [
     {
         word: "abduct",
@@ -16,12 +25,16 @@ const words = [
     // Add more words here
 ];
 
+
+// Randomize the order of words
+const shuffledWords = shuffle(words);
+
 let currentWordIndex = 0;
 let currentClueIndex = 0;
 const clues = ["definition", "synonyms", "antonyms"];
 
 function showClue() {
-    const word = words[currentWordIndex];
+    const word = shuffledWords[currentWordIndex];
     const clueType = clues[Math.floor(Math.random() * clues.length)]; // Randomize clue order
     let clueText;
 
@@ -41,6 +54,7 @@ function showClue() {
 
     document.getElementById('clue').innerText = `Clue: ${clueText} (Starts with: ${word.firstLetter.toUpperCase()})`;
 }
+
 
 function checkGuess() {
     const guess = document.getElementById('guessInput').value.trim().toLowerCase();
