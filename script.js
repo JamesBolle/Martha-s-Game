@@ -53,12 +53,34 @@ function showClue() {
     const cluePrefix = "Definition";
     const clueText = word.definition;
 
+    let remainingClues = ["synonyms", "antonyms"];
+
+    // If the player didn't guess correctly, shuffle and display remaining clues
+    if (currentClueIndex > 0) {
+        remainingClues = shuffle(remainingClues);
+        for (const clueType of remainingClues) {
+            let clueText;
+            switch (clueType) {
+                case "synonyms":
+                    clueText = word.synonyms.join(", ");
+                    break;
+                case "antonyms":
+                    clueText = word.antonyms.join(", ");
+                    break;
+                default:
+                    clueText = "Unknown clue type";
+            }
+            document.getElementById('clue').innerText += `\n${clueType.charAt(0).toUpperCase() + clueType.slice(1)}: ${clueText}`;
+        }
+    }
+
     const wordLength = word.word.length;
     const firstLetter = word.word.charAt(0).toUpperCase();
     const hiddenWord = firstLetter + " " + "_ ".repeat(wordLength - 1);
 
     document.getElementById('clue').innerText = `${cluePrefix}: ${clueText}\nClue: ${hiddenWord}`;
 }
+
 
 function checkGuess() {
     const guess = document.getElementById('guessInput').value.trim().toLowerCase();
