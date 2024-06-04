@@ -1,17 +1,17 @@
 const words = [
     {
-        word: "happy",
-        definition: "Feeling or showing pleasure or contentment",
-        synonym: "joyful",
-        antonym: "sad",
-        firstLetter: "h"
+        word: "abduct",
+        definition: "To take someone against their will using force or deception",
+        synonyms: ["kidnap","capture","seize", "snatch"],
+        antonyms: ["release","liberate"],
+        firstLetter: "a"
     },
     {
-        word: "fast",
-        definition: "Moving or capable of moving at high speed",
-        synonym: "quick",
-        antonym: "slow",
-        firstLetter: "f"
+        word: "absurd",
+        definition: "Without any sense or reason",
+        synonyms: ["ludicrous","nonsensical","preposterous"],
+        antonyms: ["sensible","logical","rational"],
+        firstLetter: "a"
     },
     // Add more words here
 ];
