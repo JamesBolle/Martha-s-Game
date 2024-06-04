@@ -39,7 +39,6 @@ const words = [
     // Add more words here
 ];
 
-
 // Randomize the order of words
 const shuffledWords = shuffle(words);
 
@@ -78,8 +77,6 @@ function showClue() {
     document.getElementById('clue').innerText = `${cluePrefix}: ${clueText}\nClue: ${hiddenWord}`;
 }
 
-
-
 function checkGuess() {
     const guess = document.getElementById('guessInput').value.trim().toLowerCase();
     const word = words[currentWordIndex].word;
@@ -115,9 +112,6 @@ function checkGuess() {
         }
     }
 }
-
-}
-
 
 function nextWord() {
     currentWordIndex = (currentWordIndex + 1) % words.length;
