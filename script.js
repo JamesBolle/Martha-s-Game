@@ -71,8 +71,13 @@ function showClue() {
             clueText = "Unknown clue type";
     }
 
-    document.getElementById('clue').innerText = `${cluePrefix}: ${clueText}\n(Starts with: ${word.firstLetter.toUpperCase()})`;
+    const wordLength = word.word.length;
+    const firstLetter = word.word.charAt(0).toUpperCase();
+    const hiddenWord = firstLetter + " " + "_ ".repeat(wordLength - 1);
+
+    document.getElementById('clue').innerText = `${cluePrefix}: ${clueText}\nClue: ${hiddenWord}`;
 }
+
 
 
 function checkGuess() {
@@ -80,7 +85,15 @@ function checkGuess() {
     const word = words[currentWordIndex].word;
 
     if (guess === word) {
-        document.getElementById('result').innerText = "Correct! Well done!";
+        const wordObj = words[currentWordIndex];
+        const cluesToShow = [
+            `Word: ${wordObj.word}`,
+            `Definition: ${wordObj.definition}`,
+            `Synonyms: ${wordObj.synonyms.join(", ")}`,
+            `Antonyms: ${wordObj.antonyms.join(", ")}`,
+            `(Starts with: ${wordObj.firstLetter.toUpperCase()})`
+        ];
+        document.getElementById('result').innerText = "Correct! Well done!\n" + cluesToShow.join("\n");
         document.getElementById('nextWord').style.display = 'block';
         document.getElementById('submitGuess').disabled = true;
     } else {
@@ -94,6 +107,7 @@ function checkGuess() {
         }
     }
 }
+
 
 function nextWord() {
     currentWordIndex = (currentWordIndex + 1) % words.length;
