@@ -7,6 +7,7 @@ function shuffle(array) {
     return array;
 }
 
+
 const words = [
     {
         word: "abduct",
@@ -361,12 +362,12 @@ const words = [
     // Add more words here
 ];
 
+
 // Randomize the order of words
 const shuffledWords = shuffle(words);
 
 let currentWordIndex = 0;
 let currentClueIndex = 0;
-
 
 function showClue() {
     const word = shuffledWords[currentWordIndex];
@@ -375,23 +376,24 @@ function showClue() {
 
     if (currentClueIndex === 0) {
         clueText = `Definition: ${word.definition}`;
+        hiddenWord = word.word.charAt(0).toUpperCase() + " " + "_ ".repeat(word.word.length - 1);
     } else if (currentClueIndex === 1) {
         clueText = `Synonyms: ${word.synonyms.join(", ")}`;
+        hiddenWord = word.word.charAt(0).toUpperCase() + " " + "_ ".repeat(word.word.length - 1);
     } else if (currentClueIndex === 2) {
         clueText = `Antonyms: ${word.antonyms.join(", ")}`;
-    } else if (currentClueIndex === 3) {
-        clueText = `Definition: ${word.definition}<br>Synonyms: ${word.synonyms.join(", ")}<br>Antonyms: ${word.antonyms.join(", ")}`;
-    }
-
-    if (currentClueIndex < 3) {
         hiddenWord = word.word.charAt(0).toUpperCase() + " " + "_ ".repeat(word.word.length - 1);
     } else {
+        clueText = `Definition: ${word.definition}<br>Synonyms: ${word.synonyms.join(", ")}<br>Antonyms: ${word.antonyms.join(", ")}`;
         hiddenWord = word.word.charAt(0).toUpperCase() + word.word.charAt(1).toUpperCase() + " " + "_ ".repeat(word.word.length - 2);
+        for (let i = 2; i < currentClueIndex; i++) {
+            hiddenWord += `${word.word.charAt(i).toUpperCase()} `;
+        }
+        hiddenWord += "_ ".repeat(word.word.length - currentClueIndex);
     }
 
     document.getElementById('clue').innerHTML = `${clueText}<br>Clue: ${hiddenWord}`;
 }
-
 
 function checkGuess() {
     const guess = document.getElementById('guessInput').value.trim().toLowerCase();
@@ -411,7 +413,7 @@ function checkGuess() {
         document.getElementById('submitGuess').disabled = true;
     } else {
         currentClueIndex++;
-        if (currentClueIndex >= 4) {
+        if (currentClueIndex >= (shuffledWords[currentWordIndex].word.length + 2)) {
             const wordObj = shuffledWords[currentWordIndex];
             const cluesToShow = [
                 `Word: ${wordObj.word}`,
@@ -425,17 +427,9 @@ function checkGuess() {
             document.getElementById('submitGuess').disabled = true;
         } else {
             showClue();
-            // Reveal one additional letter of the word
-            const hiddenWord = word
-                .split('')
-                .map((letter, index) => (index <= currentClueIndex ? letter : '_'))
-                .join(' ');
-            document.getElementById('clue').innerHTML += `<br>Clue: ${hiddenWord}`;
         }
     }
 }
-
-
 
 function nextWord() {
     currentWordIndex = (currentWordIndex + 1) % shuffledWords.length;
