@@ -7,7 +7,6 @@ function shuffle(array) {
     return array;
 }
 
-
 const words = [
     {
         word: "abduct",
@@ -362,7 +361,6 @@ const words = [
     // Add more words here
 ];
 
-
 // Randomize the order of words
 const shuffledWords = shuffle(words);
 
@@ -437,8 +435,8 @@ function endGame() {
     } else {
         message = "Keep trying! You're learning lots of words.";
     }
-    const word = shuffledWords[currentWordIndex].word;
-    const wordObj = shuffledWords[currentWordIndex];
+    const word = shuffledWords[currentWordIndex - 1].word;
+    const wordObj = shuffledWords[currentWordIndex - 1];
     const cluesToShow = [
         `Word: ${word}`,
         `Definition: ${wordObj.definition}`,
