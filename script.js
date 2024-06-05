@@ -385,8 +385,8 @@ function showClue() {
         hiddenWord = word.word.charAt(0).toUpperCase() + " " + "_ ".repeat(word.word.length - 1);
     } else {
         clueText = `Definition: ${word.definition}<br>Synonyms: ${word.synonyms.join(", ")}<br>Antonyms: ${word.antonyms.join(", ")}`;
-        hiddenWord = word.word.charAt(0).toUpperCase() + word.word.charAt(1).toUpperCase() + " " + "_ ".repeat(word.word.length - 2);
-        for (let i = 2; i < currentClueIndex; i++) {
+        hiddenWord = word.word.charAt(0).toUpperCase() + " ";
+        for (let i = 1; i < currentClueIndex; i++) {
             hiddenWord += `${word.word.charAt(i).toUpperCase()} `;
         }
         hiddenWord += "_ ".repeat(word.word.length - currentClueIndex);
