@@ -425,6 +425,12 @@ function checkGuess() {
             document.getElementById('submitGuess').disabled = true;
         } else {
             showClue();
+            // Reveal one additional letter of the word
+            const hiddenWord = word
+                .split('')
+                .map((letter, index) => (index <= currentClueIndex ? letter : '_'))
+                .join(' ');
+            document.getElementById('clue').innerHTML += `<br>Clue: ${hiddenWord}`;
         }
     }
 }
