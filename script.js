@@ -361,88 +361,46 @@ const words = [
     // Add more words here
 ];
 
+
 // Randomize the order of words
 const shuffledWords = shuffle(words);
 
 let currentWordIndex = 0;
-let currentClueIndex = 0;
-
+let score = 0;
 
 function showClue() {
     const word = shuffledWords[currentWordIndex];
     let clueText = "";
     let hiddenWord = "";
 
-    if (currentClueIndex === 0) {
-        clueText = `Definition: ${word.definition}`;
-    } else if (currentClueIndex === 1) {
-        clueText = `Synonyms: ${word.synonyms.join(", ")}`;
-    } else if (currentClueIndex === 2) {
-        clueText = `Antonyms: ${word.antonyms.join(", ")}`;
-    } else if (currentClueIndex === 3) {
-        clueText = `Definition: ${word.definition}<br>Synonyms: ${word.synonyms.join(", ")}<br>Antonyms: ${word.antonyms.join(", ")}`;
-    }
+    clueText = `Question ${currentWordIndex + 1}<br>`;
+    hiddenWord = word.word.charAt(0).toUpperCase() + " " + "_ ".repeat(word.word.length - 1);
 
-    if (currentClueIndex < 3) {
-        hiddenWord = word.word.charAt(0).toUpperCase() + " " + "_ ".repeat(word.word.length - 1);
-    } else {
-        hiddenWord = word.word.charAt(0).toUpperCase() + word.word.charAt(1).toUpperCase() + " " + "_ ".repeat(word.word.length - 2);
-    }
-
-    document.getElementById('clue').innerHTML = `${clueText}<br>Clue: ${hiddenWord}`;
+    document.getElementById('clue').innerHTML = `${clueText}<br>Definition: ${word.definition}<br>Clue: ${hiddenWord}<br>Score so far: ${score} out of ${currentWordIndex}`;
 }
-
 
 function checkGuess() {
     const guess = document.getElementById('guessInput').value.trim().toLowerCase();
     const word = shuffledWords[currentWordIndex].word;
 
     if (guess === word) {
-        const wordObj = shuffledWords[currentWordIndex];
-        const cluesToShow = [
-            `Word: ${wordObj.word}`,
-            `Definition: ${wordObj.definition}`,
-            `Synonyms: ${wordObj.synonyms.join(", ")}`,
-            `Antonyms: ${wordObj.antonyms.join(", ")}`,
-            `(Starts with: ${wordObj.firstLetter.toUpperCase()})`
-        ];
-        document.getElementById('result').innerHTML = "Correct! Well done!<br>" + cluesToShow.join("<br>");
-        document.getElementById('nextWord').style.display = 'block';
-        document.getElementById('submitGuess').disabled = true;
+        score++;
+        document.getElementById('result').innerHTML = "Correct! Well done!";
     } else {
-        currentClueIndex++;
-        if (currentClueIndex >= 4) {
-            const wordObj = shuffledWords[currentWordIndex];
-            const cluesToShow = [
-                `Word: ${wordObj.word}`,
-                `Definition: ${wordObj.definition}`,
-                `Synonyms: ${wordObj.synonyms.join(", ")}`,
-                `Antonyms: ${wordObj.antonyms.join(", ")}`,
-                `(Starts with: ${wordObj.firstLetter.toUpperCase()})`
-            ];
-            document.getElementById('result').innerHTML = `Out of clues! The word was "${word}".<br>` + cluesToShow.join("<br>");
-            document.getElementById('nextWord').style.display = 'block';
-            document.getElementById('submitGuess').disabled = true;
-        } else {
-            showClue();
-        }
+        document.getElementById('result').innerHTML = "Incorrect! Keep trying!";
+    }
+
+    currentWordIndex++;
+
+    if (currentWordIndex < 10) {
+        showClue();
+    } else {
+        document.getElementById('clue').innerHTML = `Game Over! Your final score is ${score} out of 10. Well done!`;
+        document.getElementById('submitGuess').disabled = true;
     }
 }
 
-
-
-function nextWord() {
-    currentWordIndex = (currentWordIndex + 1) % shuffledWords.length;
-    currentClueIndex = 0;
-    document.getElementById('result').innerHTML = '';
-    document.getElementById('nextWord').style.display = 'none';
-    document.getElementById('submitGuess').disabled = false;
-    document.getElementById('guessInput').value = '';
-    showClue();
-}
-
 document.getElementById('submitGuess').addEventListener('click', checkGuess);
-document.getElementById('nextWord').addEventListener('click', nextWord);
 
 // Start the game with the first clue
 showClue();
