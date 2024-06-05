@@ -57,3 +57,26 @@ body {
     color: #333333;
     font-weight: bold;
 }
+
+/* Media query for mobile devices */
+@media only screen and (max-width: 600px) {
+    body {
+        font-family: Arial, sans-serif; /* Standard font for mobile */
+    }
+    
+    #clue {
+        font-size: 1.2em; /* Decrease font size for smaller screens */
+    }
+
+    #guessInput {
+        font-size: 1em; /* Decrease font size for smaller screens */
+    }
+
+    #submitGuess, #nextWord {
+        font-size: 1em; /* Decrease font size for smaller screens */
+    }
+
+    #result {
+        font-size: 1.1em; /* Decrease font size for smaller screens */
+    }
+}
