@@ -402,7 +402,7 @@ function checkGuess() {
     const guess = document.getElementById('guessInput').value.trim().toLowerCase();
     const word = shuffledWords[currentWordIndex].word;
 
-    if (guess === word) {
+    if (guess === word || currentGuessIndex === 3) {
         score++;
         currentGuessIndex = 0;
         currentWordIndex++;
@@ -437,7 +437,16 @@ function endGame() {
     } else {
         message = "Keep trying! You're learning lots of words.";
     }
-    document.getElementById('clue').innerHTML = `Game Over! Your final score is ${score} out of 10. ${message}`;
+    const word = shuffledWords[currentWordIndex].word;
+    const wordObj = shuffledWords[currentWordIndex];
+    const cluesToShow = [
+        `Word: ${word}`,
+        `Definition: ${wordObj.definition}`,
+        `Synonyms: ${wordObj.synonyms.join(", ")}`,
+        `Antonyms: ${wordObj.antonyms.join(", ")}`,
+        `(Starts with: ${wordObj.firstLetter.toUpperCase()})`
+    ];
+    document.getElementById('clue').innerHTML = `Game Over! Your final score is ${score} out of 10. ${message}<br>` + cluesToShow.join("<br>");
     document.getElementById('submitGuess').disabled = true;
 }
 
