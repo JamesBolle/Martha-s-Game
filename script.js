@@ -368,6 +368,8 @@ let currentWordIndex = 0;
 let currentClueIndex = 0;
 const clues = ["definition", "synonyms", "antonyms"];
 let secondLetterRevealed = false;
+// Add this line here
+
 
 function showClue() {
     const word = shuffledWords[currentWordIndex];
@@ -386,7 +388,7 @@ function showClue() {
             clueType = "antonyms";
             break;
         default:
-            clueType = "Unknown";
+            clueType = "definition";
             break;
     }
 
@@ -404,8 +406,8 @@ function showClue() {
             clueText = word.antonyms.join(", ");
             break;
         default:
-            cluePrefix = "Unknown";
-            clueText = "Unknown clue type";
+            cluePrefix = "";
+            clueText = "";
     }
 
     const wordLength = word.word.length;
@@ -417,7 +419,12 @@ function showClue() {
     }
 
     document.getElementById('clue').innerText = `${cluePrefix}: ${clueText}\nClue: ${hiddenWord}`;
+    document.getElementById('details').innerText = 
+        `Definition: ${word.definition}\n` +
+        `Synonyms: ${word.synonyms.join(", ")}\n` +
+        `Antonyms: ${word.antonyms.join(", ")}`;
 }
+
 
 function checkGuess() {
     const guess = document.getElementById('guessInput').value.trim().toLowerCase();
@@ -461,6 +468,7 @@ function checkGuess() {
 }
 
 
+
 function nextWord() {
     currentWordIndex = (currentWordIndex + 1) % shuffledWords.length;
     currentClueIndex = 0;
@@ -471,6 +479,7 @@ function nextWord() {
     document.getElementById('guessInput').value = '';
     showClue();
 }
+
 
 document.getElementById('submitGuess').addEventListener('click', checkGuess);
 document.getElementById('nextWord').addEventListener('click', nextWord);
