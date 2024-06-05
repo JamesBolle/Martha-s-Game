@@ -367,6 +367,7 @@ const shuffledWords = shuffle(words);
 let currentWordIndex = 0;
 let currentClueIndex = 0;
 const clues = ["definition", "synonyms", "antonyms"];
+let secondLetterRevealed = false;
 
 function showClue() {
     const word = shuffledWords[currentWordIndex];
@@ -408,18 +409,22 @@ function showClue() {
     }
 
     const wordLength = word.word.length;
-    const firstLetter = word.word.charAt(0).toUpperCase();
-    const hiddenWord = firstLetter + " " + "_ ".repeat(wordLength - 1);
+    let hiddenWord;
+    if (secondLetterRevealed) {
+        hiddenWord = word.word.substring(0, 2).toUpperCase() + " " + "_ ".repeat(wordLength - 2);
+    } else {
+        hiddenWord = word.word.charAt(0).toUpperCase() + " " + "_ ".repeat(wordLength - 1);
+    }
 
     document.getElementById('clue').innerText = `${cluePrefix}: ${clueText}\nClue: ${hiddenWord}`;
 }
 
 function checkGuess() {
     const guess = document.getElementById('guessInput').value.trim().toLowerCase();
-    const word = words[currentWordIndex].word;
+    const word = shuffledWords[currentWordIndex].word;
 
     if (guess === word) {
-        const wordObj = words[currentWordIndex];
+        const wordObj = shuffledWords[currentWordIndex];
         const cluesToShow = [
             `Word: ${wordObj.word}`,
             `Definition: ${wordObj.definition}`,
@@ -433,26 +438,33 @@ function checkGuess() {
     } else {
         currentClueIndex++;
         if (currentClueIndex >= clues.length) {
-            const wordObj = words[currentWordIndex];
-            const cluesToShow = [
-                `Word: ${wordObj.word}`,
-                `Definition: ${wordObj.definition}`,
-                `Synonyms: ${wordObj.synonyms.join(", ")}`,
-                `Antonyms: ${wordObj.antonyms.join(", ")}`,
-                `(Starts with: ${wordObj.firstLetter.toUpperCase()})`
-            ];
-            document.getElementById('result').innerText = `Out of clues! The word was "${word}".\n` + cluesToShow.join("\n");
-            document.getElementById('nextWord').style.display = 'block';
-            document.getElementById('submitGuess').disabled = true;
+            if (!secondLetterRevealed) {
+                secondLetterRevealed = true;
+                showClue();
+            } else {
+                const wordObj = shuffledWords[currentWordIndex];
+                const cluesToShow = [
+                    `Word: ${wordObj.word}`,
+                    `Definition: ${wordObj.definition}`,
+                    `Synonyms: ${wordObj.synonyms.join(", ")}`,
+                    `Antonyms: ${wordObj.antonyms.join(", ")}`,
+                    `(Starts with: ${wordObj.firstLetter.toUpperCase()})`
+                ];
+                document.getElementById('result').innerText = `Out of clues! The word was "${word}".\n` + cluesToShow.join("\n");
+                document.getElementById('nextWord').style.display = 'block';
+                document.getElementById('submitGuess').disabled = true;
+            }
         } else {
             showClue();
         }
     }
 }
 
+
 function nextWord() {
-    currentWordIndex = (currentWordIndex + 1) % words.length;
+    currentWordIndex = (currentWordIndex + 1) % shuffledWords.length;
     currentClueIndex = 0;
+    secondLetterRevealed = false; // Reset this variable
     document.getElementById('result').innerText = '';
     document.getElementById('nextWord').style.display = 'none';
     document.getElementById('submitGuess').disabled = false;
