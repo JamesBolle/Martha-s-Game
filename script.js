@@ -7,6 +7,7 @@ function shuffle(array) {
     return array;
 }
 
+
 const words = [
     {
         word: "abduct",
@@ -367,16 +368,34 @@ const shuffledWords = shuffle(words);
 
 let currentWordIndex = 0;
 let score = 0;
+let currentGuessIndex = 0;
 
 function showClue() {
     const word = shuffledWords[currentWordIndex];
     let clueText = "";
     let hiddenWord = "";
 
-    clueText = `Question ${currentWordIndex + 1}<br>`;
-    hiddenWord = word.word.charAt(0).toUpperCase() + " " + "_ ".repeat(word.word.length - 1);
+    if (currentGuessIndex === 0) {
+        clueText = `Question ${currentWordIndex + 1}<br>`;
+        clueText += `Definition: ${word.definition}<br>`;
+        clueText += `Clue: ${word.word.charAt(0).toUpperCase()} ${"_".repeat(word.word.length - 1)}`;
+    } else if (currentGuessIndex === 1) {
+        clueText = `Question ${currentWordIndex + 1}<br>`;
+        clueText += `Synonyms: ${word.synonyms.join(", ")}<br>`;
+        clueText += `Clue: ${word.word.charAt(0).toUpperCase()} ${"_".repeat(word.word.length - 1)}`;
+    } else if (currentGuessIndex === 2) {
+        clueText = `Question ${currentWordIndex + 1}<br>`;
+        clueText += `Antonyms: ${word.antonyms.join(", ")}<br>`;
+        clueText += `Clue: ${word.word.charAt(0).toUpperCase()} ${"_".repeat(word.word.length - 1)}`;
+    } else if (currentGuessIndex === 3) {
+        clueText = `Question ${currentWordIndex + 1}<br>`;
+        clueText += `Definition: ${word.definition}<br>`;
+        clueText += `Synonyms: ${word.synonyms.join(", ")}<br>`;
+        clueText += `Antonyms: ${word.antonyms.join(", ")}<br>`;
+        clueText += `Clue: ${word.word.charAt(0).toUpperCase()} ${word.word.charAt(1).toUpperCase()} ${"_".repeat(word.word.length - 2)}`;
+    }
 
-    document.getElementById('clue').innerHTML = `${clueText}<br>Definition: ${word.definition}<br>Clue: ${hiddenWord}<br>Score so far: ${score} out of ${currentWordIndex}`;
+    document.getElementById('clue').innerHTML = `${clueText}<br>Score so far: ${score} out of ${currentWordIndex}`;
 }
 
 function checkGuess() {
@@ -385,19 +404,41 @@ function checkGuess() {
 
     if (guess === word) {
         score++;
-        document.getElementById('result').innerHTML = "Correct! Well done!";
-    } else {
-        document.getElementById('result').innerHTML = "Incorrect! Keep trying!";
-    }
+        currentGuessIndex = 0;
+        currentWordIndex++;
 
-    currentWordIndex++;
-
-    if (currentWordIndex < 10) {
-        showClue();
+        if (currentWordIndex < 10) {
+            showClue();
+        } else {
+            endGame();
+        }
     } else {
-        document.getElementById('clue').innerHTML = `Game Over! Your final score is ${score} out of 10. Well done!`;
-        document.getElementById('submitGuess').disabled = true;
+        currentGuessIndex++;
+        if (currentGuessIndex === 4) {
+            currentGuessIndex = 0;
+            currentWordIndex++;
+            if (currentWordIndex < 10) {
+                showClue();
+            } else {
+                endGame();
+            }
+        } else {
+            showClue();
+        }
     }
+}
+
+function endGame() {
+    let message = "";
+    if (score === 10) {
+        message = "Well done!";
+    } else if (score > 6) {
+        message = "Almost! Keep trying!";
+    } else {
+        message = "Keep trying! You're learning lots of words.";
+    }
+    document.getElementById('clue').innerHTML = `Game Over! Your final score is ${score} out of 10. ${message}`;
+    document.getElementById('submitGuess').disabled = true;
 }
 
 document.getElementById('submitGuess').addEventListener('click', checkGuess);
