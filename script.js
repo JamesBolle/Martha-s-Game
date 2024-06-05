@@ -386,10 +386,10 @@ function showClue() {
     } else {
         clueText = `Definition: ${word.definition}<br>Synonyms: ${word.synonyms.join(", ")}<br>Antonyms: ${word.antonyms.join(", ")}`;
         hiddenWord = word.word.charAt(0).toUpperCase() + " ";
-        for (let i = 1; i < currentClueIndex; i++) {
+        for (let i = 1; i < Math.min(currentClueIndex, word.word.length); i++) {
             hiddenWord += `${word.word.charAt(i).toUpperCase()} `;
         }
-        hiddenWord += "_ ".repeat(word.word.length - currentClueIndex);
+        hiddenWord += "_ ".repeat(word.word.length - Math.min(currentClueIndex, word.word.length));
     }
 
     document.getElementById('clue').innerHTML = `${clueText}<br>Clue: ${hiddenWord}`;
