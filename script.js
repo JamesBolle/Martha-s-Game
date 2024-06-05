@@ -362,11 +362,11 @@ const words = [
 ];
 
 // Randomize the order of words
-const shuffledWords = shuffle(words.slice(0, 10)); // Select 10 words randomly
+const shuffledWords = shuffle(words);
 
 let currentWordIndex = 0;
-let score = 0;
 let currentClueIndex = 0;
+
 
 function showClue() {
     const word = shuffledWords[currentWordIndex];
@@ -374,78 +374,75 @@ function showClue() {
     let hiddenWord = "";
 
     if (currentClueIndex === 0) {
-        clueText = `Question ${currentWordIndex + 1}<br>`;
-        clueText += `Definition: ${word.definition}<br>`;
-        clueText += `Clue: ${word.word.charAt(0).toUpperCase()} ${"_".repeat(word.word.length - 1)}`;
+        clueText = `Definition: ${word.definition}`;
     } else if (currentClueIndex === 1) {
-        clueText = `Question ${currentWordIndex + 1}<br>`;
-        clueText += `Synonyms: ${word.synonyms.join(", ")}<br>`;
-        clueText += `Clue: ${word.word.charAt(0).toUpperCase()} ${"_".repeat(word.word.length - 1)}`;
+        clueText = `Synonyms: ${word.synonyms.join(", ")}`;
     } else if (currentClueIndex === 2) {
-        clueText = `Question ${currentWordIndex + 1}<br>`;
-        clueText += `Antonyms: ${word.antonyms.join(", ")}<br>`;
-        clueText += `Clue: ${word.word.charAt(0).toUpperCase()} ${"_".repeat(word.word.length - 1)}`;
+        clueText = `Antonyms: ${word.antonyms.join(", ")}`;
     } else if (currentClueIndex === 3) {
-        clueText = `Question ${currentWordIndex + 1}<br>`;
-        clueText += `Definition: ${word.definition}<br>`;
-        clueText += `Synonyms: ${word.synonyms.join(", ")}<br>`;
-        clueText += `Antonyms: ${word.antonyms.join(", ")}<br>`;
-        clueText += `Clue: ${word.word.charAt(0).toUpperCase()} ${word.word.charAt(1).toUpperCase()} ${"_".repeat(word.word.length - 2)}`;
+        clueText = `Definition: ${word.definition}<br>Synonyms: ${word.synonyms.join(", ")}<br>Antonyms: ${word.antonyms.join(", ")}`;
     }
 
-    document.getElementById('clue').innerHTML = `${clueText}<br>Total Score: ${score}`;
+    if (currentClueIndex < 3) {
+        hiddenWord = word.word.charAt(0).toUpperCase() + " " + "_ ".repeat(word.word.length - 1);
+    } else {
+        hiddenWord = word.word.charAt(0).toUpperCase() + word.word.charAt(1).toUpperCase() + " " + "_ ".repeat(word.word.length - 2);
+    }
+
+    document.getElementById('clue').innerHTML = `${clueText}<br>Clue: ${hiddenWord}`;
 }
+
 
 function checkGuess() {
     const guess = document.getElementById('guessInput').value.trim().toLowerCase();
     const word = shuffledWords[currentWordIndex].word;
 
     if (guess === word) {
-        score++;
-        showAnswer();
+        const wordObj = shuffledWords[currentWordIndex];
+        const cluesToShow = [
+            `Word: ${wordObj.word}`,
+            `Definition: ${wordObj.definition}`,
+            `Synonyms: ${wordObj.synonyms.join(", ")}`,
+            `Antonyms: ${wordObj.antonyms.join(", ")}`,
+            `(Starts with: ${wordObj.firstLetter.toUpperCase()})`
+        ];
+        document.getElementById('result').innerHTML = "Correct! Well done!<br>" + cluesToShow.join("<br>");
+        document.getElementById('nextWord').style.display = 'block';
+        document.getElementById('submitGuess').disabled = true;
     } else {
         currentClueIndex++;
         if (currentClueIndex >= 4) {
-            showAnswer();
+            const wordObj = shuffledWords[currentWordIndex];
+            const cluesToShow = [
+                `Word: ${wordObj.word}`,
+                `Definition: ${wordObj.definition}`,
+                `Synonyms: ${wordObj.synonyms.join(", ")}`,
+                `Antonyms: ${wordObj.antonyms.join(", ")}`,
+                `(Starts with: ${wordObj.firstLetter.toUpperCase()})`
+            ];
+            document.getElementById('result').innerHTML = `Out of clues! The word was "${word}".<br>` + cluesToShow.join("<br>");
+            document.getElementById('nextWord').style.display = 'block';
+            document.getElementById('submitGuess').disabled = true;
         } else {
             showClue();
         }
     }
 }
 
-function showAnswer() {
-    const word = shuffledWords[currentWordIndex];
-    const cluesToShow = [
-        `Word: ${word.word}`,
-        `Definition: ${word.definition}`,
-        `Synonyms: ${word.synonyms.join(", ")}`,
-        `Antonyms: ${word.antonyms.join(", ")}`,
-        `(Starts with: ${word.firstLetter.toUpperCase()})`
-    ];
-    document.getElementById('clue').innerHTML = `Question ${currentWordIndex + 1} - Answer:<br>` + cluesToShow.join("<br>") + `<br><br>Score so far: ${score}`;
-    currentWordIndex++;
-    if (currentWordIndex < 10) {
-        currentClueIndex = 0;
-        showClue();
-    } else {
-        endGame();
-    }
-}
 
-function endGame() {
-    let message = "";
-    if (score === 10) {
-        message = "Well done!";
-    } else if (score > 6) {
-        message = "Almost! Keep trying!";
-    } else {
-        message = "Keep trying! You're learning lots of words.";
-    }
-    document.getElementById('clue').innerHTML += `<br><br>Total Score: ${score}/10<br>${message}`;
-    document.getElementById('submitGuess').disabled = true;
+
+function nextWord() {
+    currentWordIndex = (currentWordIndex + 1) % shuffledWords.length;
+    currentClueIndex = 0;
+    document.getElementById('result').innerHTML = '';
+    document.getElementById('nextWord').style.display = 'none';
+    document.getElementById('submitGuess').disabled = false;
+    document.getElementById('guessInput').value = '';
+    showClue();
 }
 
 document.getElementById('submitGuess').addEventListener('click', checkGuess);
+document.getElementById('nextWord').addEventListener('click', nextWord);
 
 // Start the game with the first clue
 showClue();
