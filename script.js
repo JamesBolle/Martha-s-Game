@@ -349,7 +349,7 @@ const words = [
         word: "conscience",
         definition: "A person's internal sense of right and wrong",
         synonyms: ["morals","ethics","principles"],
-        antonyms: ["there are no antonyms for this word. Here is an example sentence instead: My conscience won't let me sleep if I feel guilty."],
+        antonyms: ["there are no antonyms for this word. Here is an example sentence instead: My c_________ won't let me sleep if I feel guilty."],
         firstLetter: "c"
     },
     {
@@ -398,7 +398,7 @@ const words = [
         word: "correspond",
         definition: "To write letters or emails to someone",
         synonyms: ["communicate"],
-        antonyms: ["there are no antonyms for this word. Here is an example sentence instead: Martha and Victoria correspond by letter when they aren't able to see each other regularly."],
+        antonyms: ["there are no antonyms for this word. Here is an example sentence instead: Martha and Victoria c_________ by letter when they aren't able to see each other regularly."],
         firstLetter: "c"
     },
     {
@@ -440,21 +440,21 @@ const words = [
         word: "curiosity",
         definition: "An interesting and unusual object",
         synonyms: ["trinket","knick-knack","oddity"],
-        antonyms: ["there are no antonyms for this word. Here is an example sentence instead: There was a curiosity on every shelf in Borgin and Burkes"],
+        antonyms: ["there are no antonyms for this word. Here is an example sentence instead: There was a c________ on every shelf in Borgin and Burkes"],
         firstLetter: "c"
     },
     {
         word: "custodian",
         definition: "A person in charge of protecting something",
         synonyms: ["keeper","warden","caretaker","guardian"],
-        antonyms: ["there are no antonyms for this word. Here is an example sentence instead: The custodian in the museum patrolled the halls carfeully"],
+        antonyms: ["there are no antonyms for this word. Here is an example sentence instead: The c________ in the museum patrolled the halls carfeully"],
         firstLetter: "c"
     },
     {
         word: "debris",
         definition: "The scattered pieces of something that has been broken up or destroyed",
         synonyms: ["rubble","wreckage","detritus"],
-        antonyms: ["there are no antonyms for this word. Here is an example sentence instead: When the cheese factory exploded, debris was everywhere"],
+        antonyms: ["there are no antonyms for this word. Here is an example sentence instead: When the cheese factory exploded, d_____ was everywhere"],
         firstLetter: "d"
     },
     {
@@ -468,14 +468,14 @@ const words = [
         word: "deduce",
         definition: "To come to a logical conclusion about something based on facts or reasoning",
         synonyms: ["conclude","figure out","divine","infer"],
-        antonyms: ["there are no antonyms for this word. Here is an example sentence: We were able to deduce TJ had eaten the fish as the back door had been left open and we saw TJ licking his lips"],
+        antonyms: ["there are no antonyms for this word. Here is an example sentence: We were able to d_____ TJ had eaten the fish as the back door had been left open and we saw TJ licking his lips"],
         firstLetter: "d"
     },
     {
         word: "delude",
         definition: "To let yourself believe, or make someone else believe, something untrue",
         synonyms: ["deceive","mislead","trick"],
-        antonyms: ["there are no antonyms for this word. Here is an example sentence instead: He deluded himself into thinking he was the best tennis player in the club"],
+        antonyms: ["there are no antonyms for this word. Here is an example sentence instead: He was able to d_____ himself into thinking he was the best tennis player in the club"],
         firstLetter: "d"
     },
     {
@@ -491,6 +491,377 @@ const words = [
         synonyms: ["impoverished","poor","deprived"],
         antonyms: ["rich","wealthy","affluent"],
         firstLetter: "d"
+    },
+    {
+        word: "deteriorate",
+        definition: "To get worse",
+        synonyms: ["worsen","decline","decay"],
+        antonyms: ["improve","recover"],
+        firstLetter: "d"
+    },
+    {
+        word: "diagnose",
+        definition: "To identify a problem, for example a medical condition or a fault with something",
+        synonyms: ["determine","pinpoint"],
+        antonyms: ["overlook","disregard","neglect"],
+        firstLetter: "d"
+    },
+    {
+        word: "diligence",
+        definition: "Thorough and careful effort",
+        synonyms: ["attentiveness","assiduousness"],
+        antonyms: ["neglect","inattention"],
+        firstLetter: "d"
+    },
+    {
+        word: "disastrous",
+        definition: "Having very bad consequences",
+        synonyms: ["catastrophic","terrible","devastating"],
+        antonyms: ["beneficial","favourable","successful"],
+        firstLetter: "d"
+    },
+    {
+        word: "discontent",
+        definition: "Unhappiness with a situation",
+        synonyms: ["dissatisfaction","displeasure"],
+        antonyms: ["satisfaction","happiness","contentment"],
+        firstLetter: "d"
+    },
+    {
+        word: "discontent",
+        definition: "Dissatisfied",
+        synonyms: ["unhappy","displeased","disappointed"],
+        antonyms: ["satisfied","happy","pleased"],
+        firstLetter: "d"
+    },
+    {
+        word: "discrepancy",
+        definition: "A difference between two things that should match",
+        synonyms: ["inconsistency","disparity"],
+        antonyms: ["similarity","resemblance"],
+        firstLetter: "d"
+    },
+    {
+        word: "dishearten",
+        definition: "To make someone lose hope or morale",
+        synonyms: ["dismay","demoralise","discourage"],
+        antonyms: ["encourage","boost"],
+        firstLetter: "d"
+    },
+    {
+        word: "dispense",
+        definition: "To give out",
+        synonyms: ["distribute","supply","provide"],
+        antonyms: ["retain","keep","withhold"],
+        firstLetter: "d"
+    },
+    {
+        word: "dispense",
+        definition: "To make a choice to manage without or not use something",
+        synonyms: ["get rid of","do without"],
+        antonyms: ["there are no antonyms for this word. Here is an example sentence instead: I decided to d_______ with my jumper and walked in my t-shirt"],
+        firstLetter: "d"
+    },
+    {
+        word: "distraction",
+        definition: "Something that takes attention away from what you should be doing",
+        synonyms: ["interruption","disturbance","diversion"],
+        antonyms: ["there are no antonyms for this word. Here is an example sentence instead: The television was a d__________ and the girls ate very slowly"],
+        firstLetter: "d"
+    },
+    {
+        word: "disused",
+        definition: "No longer used",
+        synonyms: ["abandoned","deserted","neglected"],
+        antonyms: ["in use"],
+        firstLetter: "d"
+    },
+    {
+        word: "divulge",
+        definition: "To reveal something secret or private",
+        synonyms: ["disclose","make known","reveal"],
+        antonyms: ["conceal","hide","withhold"],
+        firstLetter: "d"
+    },
+    {
+        word: "eagerness",
+        definition: "The state of being very keen to do something",
+        synonyms: ["willingness","enthusiasm"],
+        antonyms: ["reluctance","indifference"],
+        firstLetter: "e"
+    },
+    {
+        word: "earnest",
+        definition: "Having a sincere and enthusiastic manner or attitude",
+        synonyms: ["fervent","passionate","honest","serious"],
+        antonyms: ["insincere","frivolous","superficial","flippant"],
+        firstLetter: "e"
+    },
+    {
+        word: "elected",
+        definition: "Chose something, usually by voting",
+        synonyms: ["voted","appointed"],
+        antonyms: ["there are no antonyms for this word. Here is an example sentence instead: The class e______ Gwendoline to be form captain"],
+        firstLetter: "e"
+    },
+    {
+        word: "elected",
+        definition: "Chosen by a vote",
+        synonyms: ["selected","named","appointed"],
+        antonyms: ["unelected"],
+        firstLetter: "e"
+    },
+    {
+        word: "eloquence",
+        definition: "Clear and fluent use of language, often delivering a persuasive or powerful message",
+        synonyms: ["fluency","clarity","oratory"],
+        antonyms: ["inatriculateness","awkwardness"],
+        firstLetter: "e"
+    },
+    {
+        word: "elude",
+        definition: "To avoid something or someone",
+        synonyms: ["evade","dodge"],
+        antonyms: ["approach","attract","confront"],
+        firstLetter: "e"
+    },
+    {
+        word: "embroil",
+        definition: "To involve in a difficult situation, for example a fight or an argument",
+        synonyms: ["entangle","implicate","enmesh"],
+        antonyms: ["exclude","free"],
+        firstLetter: "e"
+    },
+    {
+        word: "emulate",
+        definition: "To copy someone else in an attempt to match their success or achievements",
+        synonyms: ["mimic","imitate"],
+        antonyms: ["there are no antonyms for this word. Here is an example sentence instead: Pru tries to e______ her big sister"],
+        firstLetter: "e"
+    },
+    {
+        word: "enamour",
+        definition: "To cause someone to feel love, interest or fascination",
+        synonyms: ["captivate","delight","infatuate","dazzle"],
+        antonyms: ["disgust","offend","pain","displease"],
+        firstLetter: "e"
+    },
+    {
+        word: "endeavour",
+        definition: "An attempt to achieve something",
+        synonyms: ["pursuit","undertaking","bid","venture"],
+        antonyms: ["there are no antonyms for this word. Here is an example sentence instead: Good luck in your future e________"],
+        firstLetter: "e"
+    },
+    {
+        word: "endeavour",
+        definition: "To try hard to do something",
+        synonyms: ["strive","attempt","undertake"],
+        antonyms: ["there are no antonyms for this word. Here is an example sentence instead: I will e________ to eat as much as possible"],
+        firstLetter: "e"
+    },
+    {
+        word: "entice",
+        definition: "To attract or tempt someone",
+        synonyms: ["allure","invite","persuade"],
+        antonyms: ["repel","repulse","discourage"],
+        firstLetter: "e"
+    },
+    {
+        word: "evacuate",
+        definition: "To leave, or send someone else away from, a dangerous place or situation",
+        synonyms: ["flee","escape","clear","vacate","empty"],
+        antonyms: ["remain","stay"],
+        firstLetter: "e"
+    },
+    {
+        word: "evident",
+        definition: "Clear to see or understand",
+        synonyms: ["obvious","conspicuous","apparent"],
+        antonyms: ["unclear","ambiguous","obscure"],
+        firstLetter: "e"
+    },
+    {
+        word: "evolve",
+        definition: "To develop gradually over time",
+        synonyms: ["grow","progress","change"],
+        antonyms: ["regress","revert"],
+        firstLetter: "e"
+    },
+    {
+        word: "exaggerate",
+        definition: "To make something sound more extreme than it actually is",
+        synonyms: ["overstate","dramatise","embellish","hyperbolise"],
+        antonyms: ["understate","downplay"],
+        firstLetter: "e"
+    },
+    {
+        word: "existence",
+        definition: "The state of being or existing",
+        synonyms: ["presence"],
+        antonyms: ["absence","non-existence"],
+        firstLetter: "e"
+    },
+    {
+        word: "existence",
+        definition: "A way of life",
+        synonyms: ["life","situation","lifestyle"],
+        antonyms: ["there are no antonyms for this word. Here is an example sentence instead: It was a difficult e________ but they were happy"],
+        firstLetter: "e"
+    },
+    {
+        word: "exquisite",
+        definition: "Particularly beautiful or fine",
+        synonyms: ["gorgeous","striking"],
+        antonyms: ["ugly","imperfect","unrefined"],
+        firstLetter: "e"
+    },
+    {
+        word: "fabricate",
+        definition: "To make something up and pretend it's true",
+        synonyms: ["invent","falsify"],
+        antonyms: ["there are no antonyms for this word. Here is an example sentence instead: Let's f________ a story about the hamster eating my homework"],
+        firstLetter: "f"
+    },
+    {
+        word: "fabricate",
+        definition: "To make something",
+        synonyms: ["build","manufacture","construct"],
+        antonyms: ["there are no antonyms for this word. Here is an example sentence instead: She will be able to f________ a new t-shirt from this cloth"],
+        firstLetter: "f"
+    },
+    {
+        word: "fathom",
+        definition: "To understand something difficult or problematic after thinking about it carefully",
+        synonyms: ["comprehend","grasp"],
+        antonyms: ["confuse","misunderstand"],
+        firstLetter: "f"
+    },
+    {
+        word: "feign",
+        definition: "To pretend to feel or think something",
+        synonyms: ["fake","simulate"],
+        antonyms: ["there are no antonyms for this word. Here is an example sentence instead: I didn't want to do my homework so I decided to f____ a headache"],
+        firstLetter: "f"
+    },
+    {
+        word: "flippant",
+        definition: "Thoughtless and disrespectful in attitude",
+        synonyms: ["glib","frivolous","insincere"],
+        antonyms: ["respectful","earnest","sincere","serious"],
+        firstLetter: "f"
+    },
+    {
+        word: "forecast",
+        definition: "A prediction of what's going to happen",
+        synonyms: ["projection","estimate"],
+        antonyms: ["there are no antonyms for this word. Here is an example sentence instead: The weather f_______ was not accurate"],
+        firstLetter: "f"
+    },
+    {
+        word: "forecast",
+        definition: "To predict what is going to happen",
+        synonyms: ["project","estimate","anticipate"],
+        antonyms: ["there are no antonyms for this word. Here is an example sentence instead: It's difficult to accurately f_______ the weather"],
+        firstLetter: "f"
+    },
+    {
+        word: "foreign",
+        definition: "Not familiar",
+        synonyms: ["unfamiliar","strange"],
+        antonyms: ["familiar","known"],
+        firstLetter: "f"
+    },
+    {
+        word: "fortuitous",
+        definition: "Happening by chance, in a positive way",
+        synonyms: ["lucky","forunate","serendipitous"],
+        antonyms: ["unlucky","unfortunate","planned","intentional"],
+        firstLetter: "f"
+    },
+    {
+        word: "frugal",
+        definition: "Careful not to spend much money or be wasteful in any way",
+        synonyms: ["thrifty","economical"],
+        antonyms: ["wasteful","extravagant","lavish"],
+        firstLetter: "f"
+    },
+    {
+        word: "gluttonous",
+        definition: "Very greedy",
+        synonyms: ["insatiable","voracious"],
+        antonyms: ["frugal","moderate"],
+        firstLetter: "g"
+    },
+    {
+        word: "gratitude",
+        definition: "A feeling of thankfulness",
+        synonyms: ["appreciation","recognition","indebtedness"],
+        antonyms: ["ingratitude","thanklessness"],
+        firstLetter: "g"
+    },
+    {
+        word: "gregarious",
+        definition: "Fond of company",
+        synonyms: ["sociable","outgoing","friendly","affable"],
+        antonyms: ["solitary","withdrawn","reserved","standoffish"],
+        firstLetter: "g"
+    },
+    {
+        word: "grotesque",
+        definition: "Very ugly or unpleasant in appearance",
+        synonyms: ["monstrous","hideous","distorted","twisted"],
+        antonyms: ["attractive","pleasant","beautiful"],
+        firstLetter: "g"
+    },
+    {
+        word: "grotesque",
+        definition: "Unbelievably shocking or upsetting",
+        synonyms: ["outrageous","astonishing","ludicrous"],
+        antonyms: ["believable","realistic","unsurprising"],
+        firstLetter: "g"
+    },
+    {
+        word: "grudge",
+        definition: "Bitterness towards someone for past actions",
+        synonyms: ["resentment","animosity","rancour"],
+        antonyms: ["goodwill","forgiveness","friendliness"],
+        firstLetter: "g"
+    },
+    {
+        word: "grudge",
+        definition: "To do or allow something unwillingly",
+        synonyms: ["begrudge","resent","mind"],
+        antonyms: ["welcome","encourage"],
+        firstLetter: "g"
+    },
+    {
+        word: "guarantee",
+        definition: "An assurance that something will be fulfilled",
+        synonyms: ["promise","contract","agreement"],
+        antonyms: ["there are no antonyms for this word. Here is an example sentence instead: I need a g________ you will keep my secret to yourself"],
+        firstLetter: "g"
+    },
+    {
+        word: "guarantee",
+        definition: "To ensure that something will happen",
+        synonyms: ["swear","pledge","vow","undertake"],
+        antonyms: ["there are no antonyms for this word. Here is an example sentence instead: I g________ you will not regret this decision"],
+        firstLetter: "g"
+    },
+    {
+        word: "guarded",
+        definition: "Unwilling to reveal feelings or information",
+        synonyms: ["reserved","cautious","prudent","restrained"],
+        antonyms: ["open","bold","extroverted"],
+        firstLetter: "g"
+    },
+    {
+        word: "guarded",
+        definition: "Watched over and protected against harm",
+        synonyms: ["defended","shielded","supervised"],
+        antonyms: ["endangered","neglected","abandoned"],
+        firstLetter: "g"
     },
     // Add more words here
 ];
