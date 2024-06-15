@@ -10,34 +10,6 @@ function shuffle(array) {
 
 const words = [
     {
-        word: "abduct",
-        definition: "To take someone against their will using force or deception",
-        synonyms: ["kidnap","capture","seize", "snatch"],
-        antonyms: ["release","liberate"],
-        firstLetter: "a"
-    },
-    {
-        word: "absurd",
-        definition: "Without any sense or reason",
-        synonyms: ["ludicrous","nonsensical","preposterous"],
-        antonyms: ["sensible","logical","rational"],
-        firstLetter: "a"
-    },
-    {
-        word: "abundance",
-        definition: "A large quantity or amount of something",
-        synonyms: ["wealth","mass","profusion","bounty"],
-        antonyms: ["shortage","scarcity","deficiency"],
-        firstLetter: "a"
-    },
-    {
-        word: "accompany",
-        definition: "To go somewhere wth someone",
-        synonyms: ["usher","chaperone","escort"],
-        antonyms: [],
-        firstLetter: "a"
-    },
-    {
         word: "acquaint",
         definition: "To make yourself, or someone else, familiar with something",
         synonyms: ["familiarise","inform","enlighten"],
@@ -358,6 +330,167 @@ const words = [
         synonyms: ["award","grant","bestow"],
         antonyms: ["withhold","refuse","deny"],
         firstLetter: "c"
+    },
+    {
+        word: "congested",
+        definition: "Very crowded with people or cars, making it difficult to move around",
+        synonyms: ["blocked","gridlocked","packed","crammed"],
+        antonyms: ["empty","clear","unobstructed"],
+        firstLetter: "c"
+    },
+    {
+        word: "congested",
+        definition: "(For body parts) full of fluid or mucus",
+        synonyms: ["blocked","stuffed","clogged"],
+        antonyms: ["clear","unblocked"],
+        firstLetter: "c"
+    },
+    {
+        word: "conscience",
+        definition: "A person's internal sense of right and wrong",
+        synonyms: ["morals","ethics","principles"],
+        antonyms: ["there are no antonyms for this word. Here is an example sentence instead: My conscience won't let me sleep if I feel guilty."],
+        firstLetter: "c"
+    },
+    {
+        word: "contempt",
+        definition: "A lack of respect for someone or something",
+        synonyms: ["scorn","derision","loathing","disdain"],
+        antonyms: ["esteem","admiration"],
+        firstLetter: "c"
+    },
+    {
+        word: "contradict",
+        definition: "To suggest that something is wrong by offering an alternative idea or statement",
+        synonyms: ["refute","dispute","counter"],
+        antonyms: ["agree","verify","concur","endorse"],
+        firstLetter: "c"
+    },
+    {
+        word: "contort",
+        definition: "To twist or bend in an abnormal way",
+        synonyms: ["distort","deform"],
+        antonyms: ["straighted","uncoil"],
+        firstLetter: "c"
+    },
+    {
+        word: "controvery",
+        definition: "Widespread and prolonged disagreement about something",
+        synonyms: ["debate","contention","strife","dispute"],
+        antonyms: ["accord","agreement","harmony"],
+        firstLetter: "c"
+    },
+    {
+        word: "convenient",
+        definition: "Useful for a person's needs or plans",
+        synonyms: ["advantageous","helpful","beneficial"],
+        antonyms: ["inconvenient","unhelpful","troublesome"],
+        firstLetter: "c"
+    },
+    {
+        word: "correspond",
+        definition: "To have a close connection or similarity",
+        synonyms: ["match","correlate"],
+        antonyms: ["differ","clash","diverge"],
+        firstLetter: "c"
+    },
+    {
+        word: "correspond",
+        definition: "To write letters or emails to someone",
+        synonyms: ["communicate"],
+        antonyms: ["there are no antonyms for this word. Here is an example sentence instead: Martha and Victoria correspond by letter when they aren't able to see each other regularly."],
+        firstLetter: "c"
+    },
+    {
+        word: "cryptic",
+        definition: "Having an obscure or hidden meaning",
+        synonyms: ["mysterious","puzzling","vague","enigmatic"],
+        antonyms: ["clear","obvious","straightforward","explicit"],
+        firstLetter: "c"
+    },
+    {
+        word: "cultivate",
+        definition: "To actively develop something",
+        synonyms: ["foster","establish","acquire"],
+        antonyms: ["prevent","stifle"],
+        firstLetter: "c"
+    },
+    {
+        word: "cultivate",
+        definition: "To prepare land and use it for growing crops or gardening",
+        synonyms: ["tend","farm","work","plant"],
+        antonyms: ["neglect","abandon"],
+        firstLetter: "c"
+    },
+    {
+        word: "cumbersome",
+        definition: "Heavy, large and difficult to move or use",
+        synonyms: ["bulky","awkward","weighty","unwieldy"],
+        antonyms: ["manageable","light","practical","compact"],
+        firstLetter: "c"
+    },
+    {
+        word: "curiosity",
+        definition: "A desire to know or discover something",
+        synonyms: ["interest","inquisitiveness"],
+        antonyms: ["indifference","lack of interest"],
+        firstLetter: "c"
+    },
+    {
+        word: "curiosity",
+        definition: "An interesting and unusual object",
+        synonyms: ["trinket","knick-knack","oddity"],
+        antonyms: ["there are no antonyms for this word. Here is an example sentence instead: There was a curiosity on every shelf in Borgin and Burkes"],
+        firstLetter: "c"
+    },
+    {
+        word: "custodian",
+        definition: "A person in charge of protecting something",
+        synonyms: ["keeper","warden","caretaker","guardian"],
+        antonyms: ["there are no antonyms for this word. Here is an example sentence instead: The custodian in the museum patrolled the halls carfeully"],
+        firstLetter: "c"
+    },
+    {
+        word: "debris",
+        definition: "The scattered pieces of something that has been broken up or destroyed",
+        synonyms: ["rubble","wreckage","detritus"],
+        antonyms: ["there are no antonyms for this word. Here is an example sentence instead: When the cheese factory exploded, debris was everywhere"],
+        firstLetter: "d"
+    },
+    {
+        word: "decipher",
+        definition: "To work out the meaning of something that isn't clear",
+        synonyms: ["solve","decode","interpret"],
+        antonyms: ["encode","scramble"],
+        firstLetter: "d"
+    },
+    {
+        word: "deduce",
+        definition: "To come to a logical conclusion about something based on facts or reasoning",
+        synonyms: ["conclude","figure out","divine","infer"],
+        antonyms: ["there are no antonyms for this word. Here is an example sentence: We were able to deduce TJ had eaten the fish as the back door had been left open and we saw TJ licking his lips"],
+        firstLetter: "d"
+    },
+    {
+        word: "delude",
+        definition: "To let yourself believe, or make someone else believe, something untrue",
+        synonyms: ["deceive","mislead","trick"],
+        antonyms: ["there are no antonyms for this word. Here is an example sentence instead: He deluded himself into thinking he was the best tennis player in the club"],
+        firstLetter: "d"
+    },
+    {
+        word: "despise",
+        definition: "To dislike something strongly",
+        synonyms: ["hate","detest","abhor"],
+        antonyms: ["adore","love"],
+        firstLetter: "d"
+    },
+    {
+        word: "destitute",
+        definition: "Severely lacking in money and possessions",
+        synonyms: ["impoverished","poor","deprived"],
+        antonyms: ["rich","wealthy","affluent"],
+        firstLetter: "d"
     },
     // Add more words here
 ];
